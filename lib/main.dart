@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'sub_main.dart';
+import 'first_page.dart';
 
-void main(List<String> args) {
-  runApp(const FirstPage());
+void main() {
+  runApp(const MainTabWidget());
 }
 
-class FirstPage extends StatefulWidget {
-  const FirstPage({super.key});
+class MainTabWidget extends StatefulWidget {
+  const MainTabWidget({super.key});
 
   @override
-  State<FirstPage> createState() => _FirstPageState();
+  State<MainTabWidget> createState() => _MainTabWidgetState();
 }
 
-class _FirstPageState extends State<FirstPage>
-    with SingleTickerProviderStateMixin {
+class _MainTabWidgetState extends State<MainTabWidget>
+    with TickerProviderStateMixin {
   late TabController mainTabControl = TabController(length: 5, vsync: this);
+
   List<Tab> mainTabs = [
     const Tab(
       iconMargin: EdgeInsets.only(bottom: 0),
@@ -62,70 +63,14 @@ class _FirstPageState extends State<FirstPage>
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 80,
-          title: Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.only(right: 10),
-                child: const Icon(
-                  Icons.edit_outlined,
-                  size: 30,
-                ),
-              ),
-              const Text(
-                "경제 퀴즈",
-                style: TextStyle(
-                  color: Color(0xFF697077),
-                  fontSize: 22,
-                  fontFamily: 'Roboto',
-                  fontWeight: FontWeight.w700,
-                  height: 0.06,
-                ),
-              ),
-            ],
-          ),
-          actions: [
-            Container(
-              padding: const EdgeInsets.only(right: 10),
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.notifications_outlined,
-                  size: 30,
-                ),
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.only(right: 10),
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.settings_outlined,
-                  size: 30,
-                ),
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.only(right: 10),
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.person_outline,
-                  size: 30,
-                ),
-              ),
-            ),
-          ],
-        ),
         body: TabBarView(
           controller: mainTabControl,
           children: [
-            SubMainPage(),
-            SubMainPage(),
-            SubMainPage(),
-            SubMainPage(),
-            SubMainPage(),
+            FirstPage(),
+            FirstPage(),
+            FirstPage(),
+            FirstPage(),
+            FirstPage(),
           ],
         ),
         bottomNavigationBar: BottomAppBar(
